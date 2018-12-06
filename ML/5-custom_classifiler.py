@@ -15,7 +15,6 @@ class ScrappyKNN():
         self.X_train = X_train
         self.Y_train = Y_train
 
-    
     def predict(self, X_test):
         predictions = []
         for row in X_test:
@@ -43,13 +42,18 @@ Y = iris.target
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = .5)
 
+
 #from sklearn.neighbors import KNeighborsClassifier
 my_classifier = ScrappyKNN()
 
 my_classifier.fit(X_train, Y_train)
 
 predictions = my_classifier.predict(X_test)
+print("classifier prediction")
 print(predictions)
+
+print("data")
+print(Y_test)
 
 # to Calculate the accuracy of your data
 from sklearn.metrics import accuracy_score
