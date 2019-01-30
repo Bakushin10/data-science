@@ -82,7 +82,7 @@ if __name__ == "__main__":
     features_matrix, labels = m.extract_features(TRAIN_DIR, dictionary)
     test_feature_matrix, test_labels = m.extract_features(TEST_DIR, dictionary)
 
-    model = svm.SVC()
+    model = svm.SVC(kernel="rbf", C=100, gamma=1)
     model.fit(features_matrix, labels)
     predicted_labels = model.predict(test_feature_matrix)
 
