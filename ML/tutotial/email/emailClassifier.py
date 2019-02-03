@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 class MailClassifier:
 
     SPAM = "spmsg"
-
+    
     def __init__(self):
         self.stopwords = set(stopwords.words('english'))
     
@@ -68,10 +68,7 @@ class MailClassifier:
         return trimmed_text
     
     def checkFile(self, file):
-        if self.SPAM in file:
-            return 1
-        else:
-            return 0
+        return 1 if self.SPAM in file else 0
 
 if __name__ == "__main__":
     TRAIN_DIR = "train-mails/*.txt"
