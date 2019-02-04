@@ -42,6 +42,8 @@ class MailClassifier:
 
     def extract_features(self, mail_dir, dictionary):
         """
+            make features of use how each word is used in the email
+
             create numpy array of features.
             the size of the array is [test_size, 3000]. 
             each array will have the word frequency of 3000 most_common words
@@ -54,7 +56,7 @@ class MailClassifier:
             fdist = nltk.FreqDist(text)
             train_labels[i] = self.checkFile(self.file_name_list[i])
             for word, word_freq in fdist.items():
-                for j, word_dic in enumerate(dictionary):
+                for j, word_dic in enumerate(dictionary): # could it be a dict lookup?
                     if word == word_dic[0]:
                         features_matrix[i,j] = word_dic[1]
             # print(features_matrix[i])
