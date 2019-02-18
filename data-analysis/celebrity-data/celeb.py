@@ -35,13 +35,14 @@ def findMostVisitedLoc(df):
         place_count.append(value[1])
     
     print(month_data)
+    #demo(month_data, label)
     """
         plot here
     """
     y_pos = np.arange(len(label))
     plt.bar(y_pos,place_count, align='center', alpha=0.5)
     plt.xticks(y_pos, label, rotation='vertical')
-    plt.ylabel('House Price')
+    plt.ylabel('Count')
     plt.title('where celebs have been to in Tokyo')
     plt.show()
 
@@ -80,7 +81,7 @@ def findMostVisitedMonth(df):
                 loc_details[l] = [row]
 
     location = sorted(location.items(), key=operator.itemgetter(1))
-    label = []
+    label = [] # holds the location
     place_count = []
     
     for value in location:
@@ -92,18 +93,19 @@ def findMostVisitedMonth(df):
     y_pos = np.arange(len(label))
     plt.bar(y_pos,place_count, align='center', alpha=0.5)
     plt.xticks(y_pos, label, rotation='vertical')
-    plt.ylabel('House Price')
-    plt.title('where celebs have been to in Tokyo')
+    plt.ylabel('Count')
+    plt.title('Month')
     plt.show()
 
-def demo():
-    data = [[ 66386, 174296,  75131, 577908,  32015],
-        [ 58230, 381139,  78045,  99308, 160454],
-        [ 89135,  80552, 152558, 497981, 603535],
-        [ 78415,  81858, 150656, 193263,  69638],
-        [139361, 331509, 343164, 781380,  52269]]
+def demo(data, col):
+    # data = [[ 66386, 174296,  75131, 577908,  32015],
+    #     [ 58230, 381139,  78045,  99308, 160454],
+    #     [ 89135,  80552, 152558, 497981, 603535],
+    #     [ 78415,  81858, 150656, 193263,  69638],
+    #     [139361, 331509, 343164, 781380,  52269]]
 
     columns = ('Freeze', 'Wind', 'Flood', 'Quake', 'Hail')
+    columns = col
     rows = ['%d year' % x for x in (100, 50, 20, 10, 5)]
 
     values = np.arange(0, 2500, 500)
@@ -122,6 +124,7 @@ def demo():
     # Plot bars and create text labels for the table
     cell_text = []
     for row in range(n_rows):
+        print(row)
         plt.bar(index, data[row], bar_width, bottom=y_offset, color=colors[row])
         y_offset = y_offset + data[row]
         #print(y_offset)
@@ -152,6 +155,6 @@ df = pd.read_csv("celeb.csv")
 print(df.head())
 print(len(df))
 #demo()
-findMostVisitedLoc(df)
-#findMostVisitedMonth(df)
+#findMostVisitedLoc(df)
+findMostVisitedMonth(df)
 
