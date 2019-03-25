@@ -105,4 +105,7 @@ if __name__ == '__main__':
  
     # print('Missing values in training data')
     # print(show_missing(train_data))
-    train_data = drop_outliers(train_data, 'SalePrice', 500000)
+    #train_data = drop_outliers(train_data, 'SalePrice', 500000)
+    corrmat = train_data.corr()
+    fig, ax = plt.subplots(figsize=(15, 15))
+    sns.heatmap(corrmat, square=True)

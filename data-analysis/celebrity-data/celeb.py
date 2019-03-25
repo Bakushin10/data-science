@@ -22,6 +22,7 @@ def findMostVisitedLoc(df):
             if l in loc_details:
                 loc_details[l].append(row)
             else:
+                print(row)
                 loc_details[l] = [row]
 
     location = sorted(location.items(), key=operator.itemgetter(1))
@@ -151,10 +152,11 @@ def demo(data, col):
 
     plt.show()
 
+
 df = pd.read_csv("celeb.csv")
 print(df.head())
 print(len(df))
 #demo()
-#findMostVisitedLoc(df)
-findMostVisitedMonth(df)
+findMostVisitedLoc(df)
+#findMostVisitedMonth(df)
 

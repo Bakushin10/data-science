@@ -10,7 +10,6 @@ from sklearn import svm
 from sklearn.metrics import accuracy_score
 
 class MailClassifier:
-
     SPAM = "spmsg"
 
     def __init__(self):
@@ -33,7 +32,7 @@ class MailClassifier:
                 file_name_list.append(eachFile)
                 text_all += trimmed_text
             numOfFiles += 1
-
+        
         freqDist = nltk.FreqDist(text_all).most_common(3000)
         self.numOfFiles = numOfFiles
         self.trimmed_text_list = trimmed_text_list
@@ -44,7 +43,7 @@ class MailClassifier:
         """
             create numpy array of features.
             the size of the array is [test_size, 3000]. 
-            each array will have the word frequency of 3000 most_common words
+            each array will have the word frequency of 3000 most_common wordse
         """
         features_matrix = np.zeros((self.numOfFiles,3000))
         train_labels = np.zeros(self.numOfFiles)
